@@ -113,78 +113,78 @@ function Tube(x) {
     ctx.drawImage(this.img, this.x, this.y - this.img.height + this.height, this.width, this.img.height);
     ctx.drawImage(this.img, this.x, this.y + this.height + this.distance, this.width, this.img.height);
   }
-}
-function reset() {
-  bird.y = world.height / 2;
-  bird.gravity = 1;
-  world.speed = 0;
-  world.timer = 0;
-  world.topScore = world.isDemoMode ? world.topScore : Math.max(world.score, world.topScore);
-  world.score = 0;
-  bird.img.src = './img/tema.png';
-  tubes.forEach(tube => {
-    tube.x = tube.x + world.width / 4
-  })
-}
-const frameTime = 1000 / 60;
-function render() {
-  if (world.speed) {
-    bird.y = bird.y + bird.gravity;
-    bird.gravity = bird.gravity + 1.5 * 9.8/1000 * frameTime;
-    world.timer += frameTime;
   }
-  world.draw();
-  bird.draw();
-  tubes.forEach(tube => {
-    tube.x = tube.x - world.speed / 10 * frameTime;
-    tube.draw();
-    const isTubeOutOfScreen = tube.x + tube.width < 0;
-    if (isTubeOutOfScreen) {
-      tube.x = world.width;
-      tube.height = Math.random() * 250 + 50;
-      world.speed = Math.min(world.speed + .1, world.maxSpeed);
-      world.score = world.score + 1;
-      const isNextLevel = world.score % 10 === 0;
-      if (isNextLevel) S_POINT.play();
-      if (world.score % 50 === 0) {
-        bird.resist = true;
-        bird.img.src = './img/resistBird.png';
-      }
+  function reset() {
+    bird.y = world.height / 2;
+    bird.gravity = 1;
+    world.speed = 0;
+    world.timer = 0;
+    world.topScore = world.isDemoMode ? world.topScore : Math.max(world.score, world.topScore);
+    world.score = 0;
+    bird.img.src = './img/tema.png';
+    tubes.forEach(tube => {
+      tube.x = tube.x + world.width / 4
+    })
+  }
+  const frameTime = 1000 / 60;
+  function render() {
+    if (world.speed) {
+      bird.y = bird.y + bird.gravity;
+      bird.gravity = bird.gravity + 1.5 * 9.8/1000 * frameTime;
+      world.timer += frameTime;
     }
-    const isTubeReachBird = (tube.x < bird.x + bird.width / 2) && (tube.x + tube.width > bird.x);
-    if (isTubeReachBird) {
-      const isTubeHitBird = tube.height > bird.y || bird.y + bird.height > tube.height + tube.distance;
-      if (isTubeHitBird) {
-        S_HIT.play();
-        if (!bird.resist) reset()
-        bird.img.src = './img/tema.png';
-        setTimeout(() => {
-          bird.resist = false;
-        }, 1000)
+    world.draw();
+    bird.draw();
+    tubes.forEach(tube => {
+      tube.x = tube.x - world.speed / 10 * frameTime;
+      tube.draw();
+      const isTubeOutOfScreen = tube.x + tube.width < 0;
+      if (isTubeOutOfScreen) {
+        tube.x = world.width;
+        tube.height = Math.random() * 250 + 50;
+        world.speed = Math.min(world.speed + .1, world.maxSpeed);
+        world.score = world.score + 1;
+        const isNextLevel = world.score % 10 === 0;
+        if (isNextLevel) S_POINT.play();
+        if (world.score % 50 === 0) {
+          bird.resist = true;
+          bird.img.src = './img/resistBird.png';
+        }
       }
+      const isTubeReachBird = (tube.x < bird.x + bird.width / 2) && (tube.x + tube.width > bird.x);
+      if (isTubeReachBird) {
+        const isTubeHitBird = tube.height > bird.y || bird.y + bird.height > tube.height + tube.distance;
+        if (isTubeHitBird) {
+          S_HIT.play();
+          if (!bird.resist) reset()
+          bird.img.src = './img/tema.png';
+          setTimeout(() => {
+            bird.resist = false;
+          }, 1000)
+        }
+      }
+    });
+    if (world.isDemoMode) {
+      const nearTube = tubes.filter(tube => tube.x + tube.width > bird.x).sort((a, b) => a.x > b.x ? 1 : -1)[0];
+      let isNeedFly = bird.y + bird.height + 20 > nearTube.height + nearTube.distance;
+      if (isNeedFly) bird.fly();
+      /*
+      // only for debug
+      // ctx.beginPath();
+      // ctx.moveTo(0, nearTube.height + nearTube.distance);
+      // ctx.lineTo(nearTube.x, nearTube.height + nearTube.distance);
+      // ctx.stroke();
+       */
     }
-  });
-  if (world.isDemoMode) {
-    const nearTube = tubes.filter(tube => tube.x + tube.width > bird.x).sort((a, b) => a.x > b.x ? 1 : -1)[0];
-    let isNeedFly = bird.y + bird.height + 20 > nearTube.height + nearTube.distance;
-    if (isNeedFly) bird.fly();
-    /*
-    // only for debug
-    // ctx.beginPath();
-    // ctx.moveTo(0, nearTube.height + nearTube.distance);
-    // ctx.lineTo(nearTube.x, nearTube.height + nearTube.distance);
-    // ctx.stroke();
-     */
+    world.drawScore();
+    const isBirdOutOfScreen = bird.y > world.height || bird.y < 0;
+    if (isBirdOutOfScreen) {
+      S_DIE.play();
+      reset();
+    }
+    if (!world.speed) world.drawGameOver()
   }
-  world.drawScore();
-  const isBirdOutOfScreen = bird.y > world.height || bird.y < 0;
-  if (isBirdOutOfScreen) {
-    S_DIE.play();
-    reset();
-  }
-  if (!world.speed) world.drawGameOver()
-}
-setInterval(render, frameTime);
+  setInterval(render, frameTime);
 </script>
 
 </body>
