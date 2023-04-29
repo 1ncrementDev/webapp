@@ -8,6 +8,10 @@
   <style>
     body { margin: 0; }
     canvas { display: block; margin: 0 auto 20px; }
+    body {
+  overflow: hidden;
+}
+
   </style>
 </head>
 <body>
@@ -106,7 +110,7 @@ function Tube(x) {
   this.y = 0;
   this.width = 64;
   this.height = 150;
-  this.distance = 200;
+  this.distance = 400;
   this.img = new Image();
   this.img.src = './img/tube.png';
   this.draw = () => {
