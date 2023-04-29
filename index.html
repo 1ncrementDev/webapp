@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Flappy</title>
-  <meta name="viewport" content="width=device-width,initial-scale=0.5;maximum-scale=0.5;user-scalable=no;">
+  <meta name="viewport" content="width=device-width,initial-scale=1;maximum-scale=1;user-scalable=no;">
   <link rel="preload" href="./img/resistBird.png" as="image">
   <style>
-    body { background-color: #292929; }
-    button { display: block; margin: 0 auto; padding: 10px; border: none; background-color: aliceblue }
-    canvas { display: block; margin: 100px auto 20px; }
-
-</style>
+    body { margin: 0; }
+    canvas { display: block; margin: 0 auto 20px; }
+  </style>
 </head>
 <body>
-<canvas id="canvas" width="750" height="500"></canvas>
+<canvas id="canvas"></canvas>
 <script>
 const canvas = document.getElementById('canvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 const ctx = canvas.getContext('2d');
 
 const S_POINT = new Audio();
@@ -30,6 +30,7 @@ S_DIE.volume = 0.05;
 const S_HIT = new Audio();
 S_HIT.src = './audio/bird-hit.wav';
 S_HIT.volume = 0.01;
+
 
 const world = {
   width: canvas.offsetWidth,
@@ -52,12 +53,16 @@ const world = {
     ctx.font = '18px Arial';
     ctx.fillText(`Score: ${this.score}`, 15, 30);
     ctx.fillText(`Top score: ${this.topScore}`, 15, 50);
-    if (world.isDemoMode) ctx.fillText(`Demo mode`, 15, 90);
   },
   drawGameOver() {
-    ctx.font = '60px Arial';
-    ctx.fillText('Game over!', world.width / 2 - 160, world.height / 2);
-    world.isDemoMode = false;
+  ctx.font = '60px Arial';
+  ctx.shadowOffsetX = 2;
+  ctx.shadowOffsetY = 2;
+  ctx.shadowBlur = 5;
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+  ctx.fillStyle = 'white';
+  ctx.fillText('Game Over!', world.width / 2 - 160, world.height / 2);
+  world.isDemoMode = false;
   },
 };
 world.sky.src = './img/sky.png';
@@ -81,6 +86,8 @@ const bird = {
     S_FLAP.play();
     this.gravity = this.gravity = -4.5;
   },
+
+
 };
 bird.img.src = './img/tema.png';
 const tubes = [new Tube(world.width ), new Tube(world.width * 1.25), new Tube(world.width * 1.5), new Tube(world.width * 1.75)];
@@ -179,6 +186,6 @@ function render() {
 }
 setInterval(render, frameTime);
 </script>
-<br/><button onclick="world.isDemoMode = true; world.speed = 1; this.blur();">Demo mode</button>
+
 </body>
 </html>
