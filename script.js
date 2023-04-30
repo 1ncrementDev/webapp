@@ -6,5 +6,5 @@ function handleData(data) {
 
 // Создание скрипта для загрузки данных из API coinmarketcap.com
 const script = document.createElement('script');
-script.src = 'https://api.coinmarketcap.com/v2/ticker/3814/?convert=USD&callback=handleData';
+script.src = 'https://coinmarketcap.com/currencies/toncoin/';
 document.head.appendChild(script);
