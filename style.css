@@ -24,6 +24,7 @@ h1 {
   background-image: linear-gradient(to bottom, blue, white);
   -webkit-text-fill-color: transparent;
   text-stroke: 2px black;
+
 }
 
 button {
