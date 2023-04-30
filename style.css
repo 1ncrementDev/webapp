@@ -1,35 +1,3 @@
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateY(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 body {
   font-family: Intro, Arial;
   text-align: center;
@@ -38,7 +6,6 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  animation: fadeIn 2s ease-in-out;
 }
 
 p {
@@ -46,7 +13,6 @@ p {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: slideIn 1s ease-in-out;
 }
 
 h1 {
@@ -57,7 +23,6 @@ h1 {
   color: transparent;
   background-image: linear-gradient(to bottom, blue, white);
   text-stroke: 2px black;
-  animation: slideIn 1s ease-in-out;
 }
 
 button {
@@ -71,7 +36,6 @@ button {
   display: block;
   width: 100%;
   max-width: 220px;
-  animation: slideIn 1s ease-in-out;
   background-size: 200% auto;
   transition: background-position 0.5s ease;
 }
@@ -87,7 +51,6 @@ button:active {
 
 .container {
   margin-bottom: 30px;
-  animation: slideIn 1s ease-in-out;
 }
 
 .hidden {
@@ -96,12 +59,10 @@ button:active {
 
 .button-container {
   margin-top: 50px;
-  animation: slideIn 1s ease-in-out;
 }
 
 .input-container {
   margin-top: 30px;
-  animation: slideIn 1s ease-in-out;
 }
 
 input[type=text] {
@@ -114,7 +75,6 @@ input[type=text] {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   font-size: 16px;
   outline: none;
-  animation: slideIn 1s ease-in-out;
 }
 
 input[type=text]:focus {
@@ -122,32 +82,7 @@ input[type=text]:focus {
   transition: background-color 0.5s ease;
 }
 
-button {
-  margin: 30px auto;
-  padding: 12px;
-  border-radius: 5px;
-  border: none;
-  background-image: linear-gradient(to right, #4e79e3, #00bfff);
-  color: white;
-  cursor: pointer;
-  display: block;
-  width: 100%;
-  max-width: 220px;
-  animation: slideIn 1s ease-in-out;
-  background-size: 200% auto;
-  transition: background-position 0.5s ease;
-  }
-
-  button:hover {
-  background-position: right center;
-  }
-
-  button:active {
-  transform: translateY(1px);
-  transition: transform 0.2s ease;
-  }
-
-  button:disabled {
+button:disabled {
   opacity: 0.5;
   cursor: default;
-  }
+}
