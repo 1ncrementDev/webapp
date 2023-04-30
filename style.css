@@ -34,7 +34,7 @@ body {
   font-family: Intro, Arial;
   text-align: center;
   padding-top: 110px;
-  background-image: url("https://bogatyr.club/uploads/posts/2021-11/thumbs/1636922967_2-bogatyr-club-p-fon-gradient-temnii-2.jpg");
+  background-image: url("https://bogatyr.club/uploads/posts/2021-11/1636922967_2-bogatyr-club-p-fon-gradient-temnii-2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -127,28 +127,27 @@ button {
   padding: 12px;
   border-radius: 5px;
   border: none;
-  background-color: #4CAF50;
+  background-image: linear-gradient(to right, #4e79e3, #00bfff);
   color: white;
   cursor: pointer;
   display: block;
   width: 100%;
   max-width: 220px;
-}
+  animation: slideIn 1s ease-in-out;
+  background-size: 200% auto;
+  transition: background-position 0.5s ease;
+  }
 
-button:hover {
-  background-color: #3e8e41;
-  transition: background-color 0.5s ease;
-}
+  button:hover {
+  background-position: right center;
+  }
 
-button:active {
-  background-color: #3e8e41;
+  button:active {
   transform: translateY(1px);
   transition: transform 0.2s ease;
-}
+  }
 
-button:disabled {
+  button:disabled {
   opacity: 0.5;
   cursor: default;
-}
-
-
+  }
