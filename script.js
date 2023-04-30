@@ -56,7 +56,7 @@ function selectDifficulty(difficulty) {
 function checkGuess() {
   const guess = Number(guessInput.value);
   if (isNaN(guess) || guess < 1 || guess > maxNumber) {
-    resultMessage.textContent = `Введите число от 1 до ${maxNumber}`;
+    resultMessage.textContent = `Вʙᥱдᥙᴛᥱ чᥙᥴ᧘᧐ ᧐ᴛ 1 д᧐ ${maxNumber}`;
     guessInput.value = "";
     return;
   }
