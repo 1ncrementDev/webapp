@@ -5,6 +5,10 @@ body {
   background-image: url("https://bogatyr.club/uploads/posts/2021-11/thumbs/1636922967_2-bogatyr-club-p-fon-gradient-temnii-2.jpg");
   background-size: cover;
   /* background-position: center; */
+  background-size: contain; /* чтобы убедиться, что фон не обрезается */
+  background-size: 100% 100%; /* растянуть фон на всю область заднего плана */
+  background-size: 2000px 1000px; /* указать конкретную ширину и высоту фона */
+
 
 }
 
