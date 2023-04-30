@@ -3,9 +3,8 @@ function handleData(data) {
   document.getElementById('price').textContent = `$${toncoinPrice.toFixed(2)}`;
 }
 
-document.getElementById("btnPrice").addEventListener("click", function() {
+document.getElementById("update-price").addEventListener("click", function() {
   const script = document.createElement('script');
   script.src = 'https://coinmarketcap.com/currencies/toncoin/';
   document.head.appendChild(script);
 });
-
