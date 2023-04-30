@@ -2,13 +2,28 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Цена TONcoin</title>
+    <title>Угадай Число</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <h1>Цена TONcoin:</h1>
-    <p id="price"></p>
-    <button id="update-price">Узнать цену TONcoin</button>
-
+    <div class="container">
+      <h1>Угадай число</h1>
+      <button id="start" class="start-button">Старт</button>
+      <div id="menu" class="hidden">
+        <button id="easy">Угадай от 1 до 10</button>
+        <button id="medium">Угадай от 1 до 100</button>
+        <button id="hard">Угадай от 1 до 1000</button>
+      </div>
+      <div id="game" class="hidden">
+        <p>Попыток осталось: <span id="tries"></span></p>
+        <input type="text" id="guess">
+        <div class="buttons">
+          <button id="submit">Проверить</button>
+          <button id="restart">Рестарт</button>
+          <button id="back">Назад</button>
+        </div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
