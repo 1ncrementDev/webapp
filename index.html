@@ -2,22 +2,23 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Цена TONcoin</title>
+    <title>Цена Toncoin</title>
   </head>
   <body>
-    <h1>Актуальная цена TONcoin:</h1>
+    <h1>Актуальная цена Toncoin:</h1>
     <p id="price"></p>
 
     <script>
 
-      fetch('https://coinmarketcap.com/currencies/toncoin/')
-        .then(response => response.json())
-        .then(data => {
+      function handleData(data) {
+        const toncoinPrice = data.data.quotes.USD.price;
+        document.getElementById('price').textContent = `$${toncoinPrice.toFixed(2)}`;
+      }
 
-          const toncoinPrice = data.data.cryptoCurrencyDetail.lastPrice;
-          document.getElementById('price').textContent = `$${toncoinPrice.toFixed(2)}`;
-        })
-        .catch(error => console.error(error));
+
+      const script = document.createElement('script');
+      script.src = 'https://coinmarketcap.com/currencies/toncoin/';
+      document.head.appendChild(script);
     </script>
   </body>
 </html>
