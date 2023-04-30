@@ -9,16 +9,14 @@
     <p id="price"></p>
 
     <script>
-
-      function handleData(data) {
-        const toncoinPrice = data.data.quotes.USD.price;
-        document.getElementById('price').textContent = `$${toncoinPrice.toFixed(2)}`;
-      }
+      fetch('https://coinmarketcap.com/en/currencies/toncoin/')
+        .then(response => response.json())
+        .then(data => {
 
 
-      const script = document.createElement('script');
-      script.src = 'https://coinmarketcap.com/currencies/toncoin/';
-      document.head.appendChild(script);
+          document.getElementById('price').textContent = `$${toncoinPrice.toFixed(2)}`;
+        })
+        .catch(error => console.error(error));
     </script>
   </body>
 </html>
