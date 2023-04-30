@@ -46,20 +46,20 @@ function checkGuess() {
   tries--;
   triesElement.textContent = tries;
   if (guess === randomNumber) {
-    resultMessage.textContent = `Поздравляем, вы угадали число! Число было ${randomNumber}.`;
+    resultMessage.textContent = `Пᴏɜдᴩᴀʙᴧяᴇʍ, ʙы уᴦᴀдᴀᴧи чиᴄᴧᴏ! Чиᴄᴧᴏ быᴧᴏ: ${randomNumber}.`;
     hintMessage.textContent = "";
     submitButton.classList.add("hidden");
     guessInput.disabled = true;
   } else if (tries === 0) {
-    resultMessage.textContent = `К сожалению, вы проиграли. Загаданное число было: ${randomNumber}.`;
+    resultMessage.textContent = `К ᴄᴏжᴀᴧᴇнию, ʙы ᴨᴩᴏиᴦᴩᴀᴧи. Чиᴄᴧᴏ быᴧᴏ: ${randomNumber}.`;
     hintMessage.textContent = "";
     submitButton.classList.add("hidden");
     guessInput.disabled = true;
   } else if (guess > randomNumber) {
-    hintMessage.textContent = "Загаданное число меньше";
+    hintMessage.textContent = "Зᴀᴦᴀдᴀннᴏᴇ чиᴄᴧᴏ ʍᴇньɯᴇ <";
     guessInput.value = "";
   } else {
-    hintMessage.textContent = "Загаданное число больше";
+    hintMessage.textContent = "Зᴀᴦᴀдᴀннᴏᴇ чиᴄᴧᴏ бᴏᴧьɯᴇ >";
     guessInput.value = "";
   }
 }
