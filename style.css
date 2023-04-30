@@ -44,7 +44,8 @@ body {
 p {
   background: linear-gradient(to bottom, #1e90ff, #00bfff);
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
   animation: slideIn 1s ease-in-out;
 }
 
@@ -55,7 +56,6 @@ h1 {
   -webkit-background-clip: text;
   color: transparent;
   background-image: linear-gradient(to bottom, blue, white);
-  -webkit-text-fill-color: transparent;
   text-stroke: 2px black;
   animation: slideIn 1s ease-in-out;
 }
@@ -65,7 +65,7 @@ button {
   padding: 12px;
   border-radius: 5px;
   border: none;
-  background: linear-gradient(to right, #4e79e3, #00bfff);
+  background-image: linear-gradient(to right, #4e79e3, #00bfff);
   color: white;
   cursor: pointer;
   display: block;
@@ -148,7 +148,7 @@ button:active {
 
 button:disabled {
   opacity: 0.5;
-  cursor: not-allowed;
+  cursor: default;
 }
 
 

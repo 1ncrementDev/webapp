@@ -24,7 +24,19 @@ function startGame() {
 
 function selectDifficulty(difficulty) {
   maxNumber = difficulty;
-  tries = Math.ceil(Math.log2(maxNumber));
+  switch (maxNumber) {
+    case 10:
+      tries = 4;
+      break;
+    case 100:
+      tries = 12;
+      break;
+    case 1000:
+      tries = 34;
+      break;
+    default:
+      tries = 0;
+  }
   triesElement.textContent = tries;
   menu.classList.add("hidden");
   game.classList.remove("hidden");
@@ -65,7 +77,19 @@ function checkGuess() {
 }
 
 function restart() {
-  tries = Math.ceil(Math.log2(maxNumber));
+  switch (maxNumber) {
+    case 10:
+      tries = 4;
+      break;
+    case 100:
+      tries = 12;
+      break;
+    case 1000:
+      tries = 34;
+      break;
+    default:
+      tries = 0;
+  }
   triesElement.textContent = tries;
   hintMessage.textContent = "";
   resultMessage.textContent = "";
