@@ -9,13 +9,15 @@ const guessInput = document.getElementById("guess");
 const submitButton = document.getElementById("submit");
 const restartButton = document.getElementById("restart");
 const backButton = document.getElementById("back");
+const resultMessage = document.getElementById("result-message");
+const hintMessage = document.getElementById("hint-message");
 
 let maxNumber;
 let tries;
+let randomNumber;
 
 function startGame() {
   startButton.classList.add("hidden");
-
   menu.classList.remove("hidden");
   game.classList.add("hidden");
 }
@@ -26,35 +28,50 @@ function selectDifficulty(difficulty) {
   triesElement.textContent = tries;
   menu.classList.add("hidden");
   game.classList.remove("hidden");
+  guessInput.value = "";
+  hintMessage.textContent = "";
+  resultMessage.textContent = "";
+  randomNumber = Math.ceil(Math.random() * maxNumber);
+  submitButton.classList.remove("hidden");
+  restartButton.classList.remove("hidden");
 }
 
 function checkGuess() {
   const guess = Number(guessInput.value);
-  if (guess === NaN || guess < 1 || guess > maxNumber) {
-    alert(`Введите число от 1 до ${maxNumber}`);
+  if (isNaN(guess) || guess < 1 || guess > maxNumber) {
+    resultMessage.textContent = `Введите число от 1 до ${maxNumber}`;
     guessInput.value = "";
     return;
   }
   tries--;
   triesElement.textContent = tries;
   if (guess === randomNumber) {
-    alert("Поздравляем, вы угадали число!");
-    restart();
+    resultMessage.textContent = `Поздравляем, вы угадали число! Число было ${randomNumber}.`;
+    hintMessage.textContent = "";
+    submitButton.classList.add("hidden");
+    guessInput.disabled = true;
   } else if (tries === 0) {
-    alert(`К сожалению, вы проиграли. Загаданное число было: ${randomNumber}`);
-    restart();
+    resultMessage.textContent = `К сожалению, вы проиграли. Загаданное число было: ${randomNumber}.`;
+    hintMessage.textContent = "";
+    submitButton.classList.add("hidden");
+    guessInput.disabled = true;
   } else if (guess > randomNumber) {
-    alert("Загаданное число меньше");
+    hintMessage.textContent = "Загаданное число меньше";
     guessInput.value = "";
   } else {
-    alert("Загаданное число больше");
+    hintMessage.textContent = "Загаданное число больше";
     guessInput.value = "";
   }
 }
 
 function restart() {
-  guessInput.value = "";
-  startGame();
+  tries = Math.ceil(Math.log2(maxNumber));
+  triesElement.textContent = tries;
+  hintMessage.textContent = "";
+  resultMessage.textContent = "";
+  guessInput.disabled = false;
+  randomNumber = Math.ceil(Math.random() * maxNumber);
+  submitButton.classList.remove("hidden");
 }
 
 startButton.addEventListener("click", startGame);
