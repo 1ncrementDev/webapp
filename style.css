@@ -1,7 +1,52 @@
 body {
   font-family: Intro, Arial;
   text-align: center;
-  padding-top: 140px;
+  padding-top: 110px;
+  background-image: url("https://bogatyr.club/uploads/posts/2021-11/thumbs/1636922967_2-bogatyr-club-p-fon-gradient-temnii-2.jpg");
+  background-size: cover;
+  /* background-position: center; */
+
+}
+
+p {
+  background: linear-gradient(to bottom, #1e90ff, #00bfff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to bottom, blue, white);
+  -webkit-text-fill-color: transparent;
+  text-stroke: 2px black;
+
+}
+
+button {
+  margin: 30px auto;
+  padding: 12px;
+  border-radius: 5px;
+  border: none;
+  background-image: linear-gradient(to bottom, #87CEEB, #00BFFF);
+  color: white;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  max-width: 220px;
+}
+
+button:hover {
+  background-image: linear-gradient(to bottom, #7EC0EE, #1E90FF);
+}
+
+button:active {
+  background-image: linear-gradient(to bottom, #1E90FF, #7EC0EE);
+  transform: translateY(1px);
 }
 
 
@@ -24,8 +69,17 @@ body {
 input[type=text] {
   width: 100%;
   max-width: 200px;
-  margin: 10px auto;
-  display: block;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  font-size: 16px;
+  outline: none;
+}
+
+input[type=text]:focus {
+  background-color: #e5e5e5;
 }
 
 button {
