@@ -16,6 +16,11 @@ let maxNumber;
 let tries;
 let randomNumber;
 
+window.onload = function() {
+  document.body.style.backgroundImage = "url('https://bogatyr.club/uploads/posts/2021-11/thumbs/1636922967_2-bogatyr-club-p-fon-gradient-temnii-2.jpg')";
+}
+
+
 function startGame() {
   startButton.classList.add("hidden");
   menu.classList.remove("hidden");
